@@ -1,0 +1,16 @@
+<div class="col-md-6">
+    <h2 class="text-center">Add Student</h2>
+    <form>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="name" [(ngModel)]="student.name" placeholder="Name" name="name" class="form-control" id="name">
+        </div>
+
+        <div class="form-group">
+            <label for="designation">Passport Number:</label>
+            <input [(ngModel)]="student.passportNumber" placeholder="Passport Number" name="passportNumber" class="form-control"
+                id="passportNumber">
+        </div>
+        <button class="btn btn-success" (click)="addStudent()">Create</button>
+    </form>
+</div>

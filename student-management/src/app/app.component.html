@@ -1,0 +1,75 @@
+<style>
+  .content {
+    display: flex;
+    margin: 32px auto;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    height: 40px;
+    width: 200px;
+    margin: 0 8px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+  }
+
+  .card.card-small {
+    height: 16px;
+    width: 168px;
+  }
+
+  .card.highlight-card {
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    border: none;
+    width: auto;
+    min-width: 30%;
+    position: relative;
+  }
+</style>
+<app-header></app-header>
+<div class="content" role="main">
+  <!-- Highlight Card -->
+  <div class="card highlight-card card-small">
+    <span>{{ title }} app is running!</span>
+  </div>
+</div>
+
+<tr *ngFor="let row of backendData; index as i;" class="hover-highlight">
+
+  <td class="benchmark_name">
+    {{row.name}}
+  </td>
+  <td>
+    {{row.value}}
+  </td>
+  <td>
+    {{row.description}}
+  </td>
+  <td>
+    <button *ngIf="enableEdit && enableEditIndex == i" (click)="enableEdit=false" class="btn page-secondary-action-btn"
+      ng-click="cancel()">Cancel</button>
+    <button *ngIf="enableEdit && enableEditIndex == i" id="saveBtn" class="btn page-primary-action-btn"
+      (click)="saveSegment()" type="submit">Save</button>
+    <a href="#" class="table-row-action edit-action" *ngIf="!enableEdit" (click)="enableEditMethod($event, i)">
+      edit
+    </a>
+  </td>
+  <td>
+  </td>
+</tr>
+
+<router-outlet></router-outlet>
+<app-footer></app-footer>
